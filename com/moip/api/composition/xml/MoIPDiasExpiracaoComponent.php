@@ -1,6 +1,5 @@
 <?php
 require_once 'com/moip/api/MoIPComponent.php';
-require_once '';
 
 class MoIPDiasExpiracaoComponent extends MoIPComponent {
 	/**

@@ -6,7 +6,7 @@
 interface MoIPAPIStrategy {
 	/**
 	 * Executa a ação adequada para o tipo de integração.
-	 * @param	MoIPAPI $context
+	 * @param	MoIP $context
 	 */
-	public function execute( MoIPAPI $context );
+	public function execute( MoIP $context );
 }

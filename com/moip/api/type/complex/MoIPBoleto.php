@@ -1,4 +1,6 @@
 <?php
+require_once 'com/moip/api/type/complex/MoIPDias.php';
+
 final class MoIPBoleto {
 	/**
 	 * @var	string
@@ -88,8 +90,15 @@ final class MoIPBoleto {
 	/**
 	 * @param	MoIPDias $diasExpiracao
 	 */
-	public function setDiasExpiracao( MoIPDias $diasExpiracao ) {
-		$this->diasExpiracao = $diasExpiracao;
+	public function setDiasExpiracao( $diasExpiracao ) {
+		if ( !is_object( $diasExpiracao ) ) {
+			$this->diasExpiracao = new MoIPDias();
+			$this->diasExpiracao->setDias( $diasExpiracao );
+		} else if ( $diasExpiracao instanceof MoIPDias ) {
+			$this->diasExpiracao = $diasExpiracao;
+		} else {
+			throw new UnexpectedValueException( 'Valor inesperado para dias expiração' );
+		}
 	}
 
 	/**

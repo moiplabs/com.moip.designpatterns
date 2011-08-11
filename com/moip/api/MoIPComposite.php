@@ -1,5 +1,5 @@
 <?php
-require_once 'moip/composition/MoIPComponent.php';
+require_once 'com/moip/api/MoIPComponent.php';
 
 /**
  * Base para a implementação de um componente que aceita filhos
@@ -29,6 +29,8 @@ abstract class MoIPComposite extends MoIPComponent implements IteratorAggregate 
 	 */
 	public function addChild( MoIPComponent $child ) {
 		$this->children[] = $child;
+
+		return $child;
 	}
 
 	/**

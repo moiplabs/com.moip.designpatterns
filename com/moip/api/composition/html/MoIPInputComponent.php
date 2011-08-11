@@ -1,5 +1,5 @@
 <?php
-require_once 'moip/composition/MoIPComponent.php';
+require_once 'com/moip/api/MoIPComponent.php';
 
 /**
  * Implementação de um INPUT em uma integração HTML com a API

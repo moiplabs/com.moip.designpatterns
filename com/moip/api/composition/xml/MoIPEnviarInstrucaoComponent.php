@@ -1,5 +1,5 @@
 <?php
-require_once 'moip/composition/MoIPComposite.php';
+require_once 'com/moip/api/MoIPComposite.php';
 
 /**
  * Implementação do nó EnviarInstrucao do XML na integração com a API

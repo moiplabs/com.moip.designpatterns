@@ -1,4 +1,7 @@
 <?php
+require_once 'com/moip/api/type/complex/MoIPIdentidade.php';
+require_once 'com/moip/api/type/complex/MoIPEndereco.php';
+
 final class MoIPIndividuo {
 	/**
 	 * @var	string
@@ -139,8 +142,15 @@ final class MoIPIndividuo {
 	/**
 	 * @param	MoIPIdentidade $identidade
 	 */
-	public function setIdentidade( MoIPIdentidade $identidade ) {
-		$this->identidade = $identidade;
+	public function setIdentidade( $identidade ) {
+		if ( is_string( $identidade ) ) {
+			$this->identidade = new MoIPIdentidade();
+			$this->identidade->setIdentidade( $identidade );
+		} else if ( is_object( $identidade ) && $identidade instanceof MoIPIdentidade ) {
+			$this->identidade = $identidade;
+		} else {
+			throw new UnexpectedValueException( 'Valor não esperado para identidade' );
+		}
 	}
 
 	/**

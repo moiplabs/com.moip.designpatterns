@@ -1,9 +1,22 @@
 <?php
 final class MoIPIdentidade {
 	/**
+	 * @var	string
+	 */
+	private $identidade;
+
+	/**
 	 * @var	MoIPTipoIdentidade
 	 */
 	private $tipo;
+
+	/**
+	 * Recupera o valor de $identidade
+	 * @return	string
+	 */
+	public function getIdentidade() {
+		return $this->identidade;
+	}
 
 	/**
 	 * Recupera o valor de $tipo
@@ -11,6 +24,13 @@ final class MoIPIdentidade {
 	 */
 	public function getTipo() {
 		return $this->tipo;
+	}
+
+	/**
+	 * @param	string $identidade
+	 */
+	public function setIdentidade( $identidade ) {
+		$this->identidade = $identidade;
 	}
 
 	/**

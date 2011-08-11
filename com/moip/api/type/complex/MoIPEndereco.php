@@ -1,4 +1,7 @@
 <?php
+require_once 'com/moip/api/type/simple/MoIPCodigoEstado.php';
+require_once 'com/moip/api/type/simple/MoIPCodigoPais.php';
+
 final class MoIPEndereco {
 	/**
 	 * @var	string
@@ -148,8 +151,14 @@ final class MoIPEndereco {
 	/**
 	 * @param	MoIPCodigoEstado $estado
 	 */
-	public function setEstado( MoIPCodigoEstado $estado ) {
-		$this->estado = $estado;
+	public function setEstado( $estado ) {
+		if ( is_string( $estado ) ) {
+			$this->estado = new MoIPCodigoEstado( $estado );
+		} else if ( is_object( $estado ) && $estado instanceof MoIPCodigoEstado ) {
+			$this->estado = $estado;
+		} else {
+			throw new UnexpectedValueException( 'Valor não esperado no código' );
+		}
 	}
 
 	/**

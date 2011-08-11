@@ -1,5 +1,5 @@
 <?php
-require_once 'moip/composition/MoIPComponent.php';
+require_once 'com/moip/api/MoIPComponent.php';
 
 class MoIPLogradouroComponent extends MoIPComponent {
 	/**
