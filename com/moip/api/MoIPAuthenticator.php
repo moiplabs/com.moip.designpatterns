@@ -14,12 +14,12 @@ class MoIPAuthenticator implements HTTPAuthenticator {
 
 	/**
 	 * Constroi o objeto de autenticação
-	 * @param	string $username Nome do usuário do cPanel
-	 * @param	string $password Senha do usuário do cPanel
+	 * @param	string $token Token da conta MoIP
+	 * @param	string $key Key da conta MoIP
 	 */
-	public function __construct( $username , $password ) {
-		$this->setUsername( $username );
-		$this->setPassword( $password );
+	public function __construct( $token , $key ) {
+		$this->setToken( $token );
+		$this->setKey( $key );
 	}
 
 	/**
@@ -29,40 +29,40 @@ class MoIPAuthenticator implements HTTPAuthenticator {
 	public function authenticate( HTTPRequest $httpRequest ) {
 		$httpRequest->addRequestHeader( 'Authorization' , sprintf(
 			'Basic %s' , base64_encode(
-				sprintf( '%s:%s' , $this->username , $this->password )
+				sprintf( '%s:%s' , $this->token , $this->key )
 			) )
 		);
 	}
 
 	/**
-	 * Recupera a senha do usuário
+	 * Recupera a Key do usuário
 	 * @return	string
 	 */
-	public function getPassword() {
-		return $this->password;
+	public function getKey() {
+		return $this->key;
 	}
 
 	/**
-	 * Recupera o nome do usuário
+	 * Recupera o token do usuário
 	 * @return	string
 	 */
-	public function getUsername() {
-		return $this->username;
+	public function getToken() {
+		return $this->token;
 	}
 
 	/**
-	 * Define a senha do usuário
-	 * @param	string $password A senha que será definida
+	 * Define a key do usuário
+	 * @param	string $key A key que será definida
 	 */
-	public function setPassword( $password ) {
-		$this->password = $password;
+	public function setKey( $key ) {
+		$this->key = $key;
 	}
 
 	/**
-	 * Define o nome do usuário
-	 * @param	string $username O nome que será definido
+	 * Define o token do usuário
+	 * @param	string $token O token que será definido
 	 */
-	public function setUsername( $username ) {
-		$this->username = $username;
+	public function setToken( $token ) {
+		$this->token = $token;
 	}
 }
