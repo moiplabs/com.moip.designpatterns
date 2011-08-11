@@ -16,6 +16,7 @@ class MoIPIntegracaoHTMLStrategy implements MoIPAPIStrategy {
 
 	public function __construct( $carteira , $urlRetorno ) {
 		$this->carteira = $carteira;
+		$this->urlRetorno = $urlRetorno;
 	}
 
 	/**
@@ -24,9 +25,12 @@ class MoIPIntegracaoHTMLStrategy implements MoIPAPIStrategy {
 	 */
 	public function execute( MoIP $context ) {
 		$form = new MoIPFormComponent();
+		$valor = current( $context->getValores() )->getValor();
+		$valor = (int) ($valor * 100);
+
 		$form->addChild( new MoIPInputComponent( 'id_carteira' , $this->carteira ) )->addAttribute( 'type' , 'hidden' );
 		$form->addChild( new MoIPInputComponent( 'url_retorno' , $this->urlRetorno ) )->addAttribute( 'type' , 'hidden' );
-		$form->addChild( new MoIPInputComponent( 'valor' , current( $context->getValores() )->getValor() ) )->addAttribute( 'type' , 'hidden' );
+		$form->addChild( new MoIPInputComponent( 'valor' , $valor ) )->addAttribute( 'type' , 'hidden' );
 		$form->addChild( new MoIPInputComponent( 'nome' , $context->getRazao() ) )->addAttribute( 'type' , 'hidden' );
 		$form->addChild( new MoIPInputComponent( 'id_transacao' , $context->getIdProprio() ) )->addAttribute( 'type' , 'hidden' );
 
