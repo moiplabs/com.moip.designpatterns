@@ -1,4 +1,6 @@
 <?php
+require_once 'com/moip/api/type/simple/MoIPTipoIdentidade.php';
+
 final class MoIPIdentidade {
 	/**
 	 * @var	string
@@ -9,6 +11,10 @@ final class MoIPIdentidade {
 	 * @var	MoIPTipoIdentidade
 	 */
 	private $tipo;
+
+	public function __construct() {
+		$this->tipo = new MoIPTipoIdentidade( MoIPTipoIdentidade::CPF );
+	}
 
 	/**
 	 * Recupera o valor de $identidade
