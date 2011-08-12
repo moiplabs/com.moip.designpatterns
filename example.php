@@ -27,7 +27,7 @@ $boleto = new MoIPBoleto();
 $boleto->setDiasExpiracao( 5 );
 
 //Estratégia de integração com Pagamento Direto
-//$strategy = new MoIPPagamentoDiretoStrategy( new MoIPAuthenticator( 'YTQ54YQLXTINWUP8YHS8S1DAYPCP7OZ5' , '5MO308HWJDMBGTDJKQXQVY3CRPBYDPLJJCMOGMV5' ) );
+//$strategy = new MoIPPagamentoDiretoStrategy( new MoIPAuthenticator( 'seu_token' , 'sua_key' ) );
 
 //Estratégia de integração HTML
 $strategy = new MoIPIntegracaoHTMLStrategy( 'teste@exemplo.com' , 'http://127.0.0.1' );
