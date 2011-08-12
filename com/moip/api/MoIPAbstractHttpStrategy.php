@@ -23,4 +23,20 @@ abstract class MoIPAbstractHttpStrategy implements MoIPAPIStrategy {
 
 		return $httpConnection;
 	}
+
+	/**
+	 * @param	MoIPComponent $component
+	 * @param	string $path
+	 * @return	HTTPResponse
+	 */
+	protected function request( MoIPComponent $component , $path = '/sandbox/ws/alpha/EnviarInstrucao/Unica' ) {
+		$xml = '<?xml version="1.0"?>' . PHP_EOL;
+		$xml.= $component->draw();
+
+		$httpConnection = $this->createHttpConnection();
+		$httpConnection->initialize( 'desenvolvedor.moip.com.br' , true );
+		$httpConnection->setRequestBody( $xml );
+
+		return $httpConnection->execute( $path , HTTPRequestMethod::POST );
+	}
 }
