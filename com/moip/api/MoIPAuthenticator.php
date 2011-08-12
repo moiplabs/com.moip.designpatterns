@@ -5,12 +5,12 @@ class MoIPAuthenticator implements HTTPAuthenticator {
 	/**
 	 * @var	string
 	 */
-	private $password;
+	private $key;
 
 	/**
 	 * @var	string
 	 */
-	private $username;
+	private $token;
 
 	/**
 	 * Constroi o objeto de autenticação
